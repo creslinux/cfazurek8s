@@ -11,14 +11,21 @@ then
   echo "  az account list --output table                    => Check which Azure accounts you have."
   echo "  az account set -s \"<your-azure-account-name>\"     => Set the right azure account."
   echo "  az login                                          => Login to azure cli."
-  exit 1
+  #exit 1
 fi
 
 
-LOCATION=$1
-RESOURCE_GROUP_NAME=$2
-STORAGE_ACCOUNT_NAME=$3
-CONTAINER_NAME=$4
+#westeurope storage-account-rg 'Free Trial' terrablob
+
+#LOCATION=$1
+#RESOURCE_GROUP_NAME=$2
+#STORAGE_ACCOUNT_NAME=$3
+#CONTAINER_NAME=$4
+
+LOCATION='westeurope'
+RESOURCE_GROUP_NAME='storage-account-rg'
+STORAGE_ACCOUNT_NAME="cfstorage"
+CONTAINER_NAME='terrablob'
 
 # Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
