@@ -28,3 +28,12 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
+
+
+### Create a vault to store the key within
+#az group create --name key-vault-rg --location westeurope
+#az keyvault create --name cfazurek8s-aks-key-vault --resource-group key-vault-rg --location westeurope
+#az keyvault secret set --vault-name cfazurek8s-aks-key-vault --name terraform-backend-key --value <ACCESS KEY FROM CREATE STORAGE SCRIPT>
+
+### Check can Return the key from vault
+#az keyvault secret show --name terraform-backend-key --vault-name cfazurek8s-aks-key-vault --query value -o tsv
