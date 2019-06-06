@@ -1,37 +1,23 @@
 #!/bin/bash
 
-# Script adapted from https://docs.microsoft.com/en-us/azure/terraform/terraform-backend.
-# We cannot create this storage account and blob container using Terraform itself since
-# we are creating the remote state storage for Terraform and Terraform needs this storage in terraform init phase.
+# Creates Storage area to host Terraform script in Azure
 
-if [ $# -ne 4 ]
-then
-  echo "Usage: ./create-azure-storage-account.sh <location> <res-group-name> <storage-account-name> <container-name>"
+  echo "Usage: ./create-azure-storage-account.sh"
   echo "NOTE: Use the following azure cli commands to check the right account and to login to az first:"
   echo "  az account list --output table                    => Check which Azure accounts you have."
   echo "  az account set -s \"<your-azure-account-name>\"     => Set the right azure account."
   echo "  az login                                          => Login to azure cli."
-  #exit 1
-fi
-
-
-#westeurope storage-account-rg 'Free Trial' terrablob
-
-#LOCATION=$1
-#RESOURCE_GROUP_NAME=$2
-#STORAGE_ACCOUNT_NAME=$3
-#CONTAINER_NAME=$4
 
 LOCATION='westeurope'
 RESOURCE_GROUP_NAME='storage-account-rg'
-STORAGE_ACCOUNT_NAME="cfstorage"
+STORAGE_ACCOUNT_NAME="poccfstorek8s"
 CONTAINER_NAME='terrablob'
 
 # Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
 
 # Create storage account
-az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
+az storage account create --verbose --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
 
 # Get storage account key
 ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query [0].value -o tsv)
