@@ -6,9 +6,9 @@ image:
   pullPolicy: IfNotPresent
 service:
   name: python
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 8080
+  type: LoadBalancer
+  externalPort: 81
+  internalPort: 8081
 resources:
   limits:
     cpu: 100m
