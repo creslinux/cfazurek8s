@@ -17,15 +17,15 @@ from cap_demo_app import cap_demo_app
 
 @pytest.fixture
 def client():
-    db_fd, minitwit.app.config['DATABASE'] = tempfile.mkstemp()
-    client = minitwit.app.test_client()
-    with minitwit.app.app_context():
-        minitwit.init_db()
+    db_fd, cap_demo_app.app.config['DATABASE'] = tempfile.mkstemp()
+    client = cap_demo_app.app.test_client()
+    with cap_demo_app.app.app_context():
+        cap_demo_app.init_db()
 
     yield client
 
     os.close(db_fd)
-    os.unlink(minitwit.app.config['DATABASE'])
+    os.unlink(cap_demo_app.app.config['DATABASE'])
 
 
 def register(client, username, password, password2=None, email=None):
