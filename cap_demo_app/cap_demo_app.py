@@ -10,13 +10,13 @@ from werkzeug import check_password_hash, generate_password_hash
 
 
 # configuration
-DATABASE = '/tmp/minitwit.db'
+DATABASE = '/tmp/cap_demo_app.db'
 PER_PAGE = 30
 DEBUG = True
 SECRET_KEY = b'_5#y2L"F4Q8z\n\xec]/'
 
 # create our little application :)
-app = Flask('minitwit')
+app = Flask('cap_demo_app')
 app.config.from_object(__name__)
 app.config.from_envvar('MINITWIT_SETTINGS', silent=True)
 

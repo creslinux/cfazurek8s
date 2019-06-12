@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='minitwit',
-    packages=['minitwit'],
+    name='cap_demo_app',
+    packages=['cap_demo_app'],
     include_package_data=True,
     install_requires=[
         'flask',

@@ -12,7 +12,7 @@
 import os
 import tempfile
 import pytest
-from minitwit import minitwit
+from cap_demo_app import cap_demo_app
 
 
 @pytest.fixture

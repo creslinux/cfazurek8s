@@ -1,6 +1,6 @@
 FROM python:3.6.4-alpine3.6
 
-ENV FLASK_APP=minitwit
+ENV FLASK_APP=cap_demo_app
 
 COPY . /app
 
