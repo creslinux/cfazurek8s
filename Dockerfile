@@ -1,12 +1,21 @@
-FROM python
-ENV PORT 8080
-EXPOSE 8080
-WORKDIR /usr/src/app
+FROM python:3.6.4-alpine3.6
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+ENV FLASK_APP=minitwit
 
-COPY . .
+COPY . /app
 
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+WORKDIR /app
+
+RUN pip install --editable .
+
+RUN flask initdb
+
+# Unit tests
+# python setup.py test
+
+EXPOSE 5000
+
+CMD [ "flask", "run", "--host=0.0.0.0" ]
+
+
+
