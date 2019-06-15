@@ -11,8 +11,7 @@ RUN pip install --upgrade pip &&  pip install --editable .
 RUN flask initdb
 
 # Unit tests
-# python setup.py test
-
+#python setup.py test
 EXPOSE 5000
 
 CMD [ "flask", "run", "--host=0.0.0.0" ]
