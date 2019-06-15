@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-    MiniTwit Tests
-    ~~~~~~~~~~~~~~
-
-    Tests the MiniTwit application.
-
-    :copyright: © 2010 by the Pallets team.
-    :license: BSD, see LICENSE for more details.
-"""
-
 import os
 import tempfile
 import pytest
